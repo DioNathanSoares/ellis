@@ -1,0 +1,11 @@
+
+services:
+  app: # Define um serviço chamado 'app'
+    build: .  # Instrui o Docker Compose a construir a imagem para este serviço a partir do diretório atual (onde o arquivo docker-compose.yml está localizado)
+    container_name: api # Define um nome para o contêiner do serviço
+    ports:  # Mapeia a porta 8000 do host para a porta 8000 do contêiner
+      - "8000:8000"
+    volumes:
+      # Monta o diretorio atual (onde está o seu código) em /app dentro do contêiner.
+      # Isso é ótimo para desenvolvimento, pois as alterações no código são refletidas automaticamente no contêiner devido ao --reload do uvicorn.
+      - .:/app
